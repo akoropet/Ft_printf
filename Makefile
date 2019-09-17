@@ -6,12 +6,15 @@
 #    By: akoropet <akoropet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/14 19:20:08 by akoropet          #+#    #+#              #
-#    Updated: 2019/02/28 15:13:09 by akoropet         ###   ########.fr        #
+#    Updated: 2019/09/17 17:48:34 by akoropet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME =			libftprintf.a
 
-OBJ = $(SRC:.c=.o)
+SRC_DIR =       ./source/
+OBJ_DIR =       ./objective/
+INC_DIR =       ./include/
 
 SRC =	libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c \
 		libft/ft_isascii.c libft/ft_isdigit.c libft/ft_isprint.c libft/ft_itoa.c \
@@ -50,22 +53,61 @@ SRC =	libft/ft_atoi.c libft/ft_bzero.c libft/ft_isalnum.c libft/ft_isalpha.c \
 		print_perc.c \
 		correct_f.c
 
-NAME = libftprintf.a
-
 FLAGS = -Wall -Werror -Wextra
+
+OBJ =           $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+
+# LIB = 			./lib/lib.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
+# 	@make -C lib
+# 	@gcc $(FLAGS) $(addprefix $(SRC_DIR), $(SRC)) $(LIB) -o $(NAME)
 	@ar rcs $(NAME) $(OBJ)
+	@echo "\033[92m>>>ft_printf compiled<<<\033[0m"
 
-%.o : %.c
-	@gcc $(FLAGS) -c -o  $@ $<
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@gcc $(FLAGS) -c $< -o $@ -I $(INC_DIR)
+
+$(OBJ): | $(OBJ_DIR)
+
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)/libft
 
 clean:
-	@rm -rf $(OBJ)
+# 	@make clean -C lib
+	@rm -f $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+# 	@make fclean -C lib
+	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)\libft
+	@rm -f $(NAME)
 
 re: fclean all
+
+vpath %.c $(SRC_DIR)
+
+
+
+# NAME = libftprintf.a
+
+# FLAGS = -Wall -Werror -Wextra
+
+# all: $(NAME)
+
+# $(NAME): $(OBJ)
+# 	@ar rcs $(NAME) $(OBJ)
+
+# %.o : %.c
+# 	@gcc $(FLAGS) -c -o  $@ $<
+
+# clean:
+# 	@rm -rf $(OBJ)
+
+# fclean: clean
+# 	@rm -rf $(NAME)
+
+# re: fclean all

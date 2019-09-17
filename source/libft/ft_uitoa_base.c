@@ -6,12 +6,12 @@
 /*   By: akoropet <akoropet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 18:29:03 by akoropet          #+#    #+#             */
-/*   Updated: 2019/02/17 20:59:59 by akoropet         ###   ########.fr       */
+/*   Updated: 2019/09/17 17:49:36 by akoropet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../ft_printf.h"
+#include "../include/ft_printf.h"
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 

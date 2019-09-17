@@ -6,7 +6,7 @@
 /*   By: akoropet <akoropet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:39:28 by akoropet          #+#    #+#             */
-/*   Updated: 2019/02/28 13:38:34 by akoropet         ###   ########.fr       */
+/*   Updated: 2019/09/17 17:50:11 by akoropet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # define TYPE_NUM 11
 
-# include "./libft/libft.h"
+# include "../source/libft/libft.h"
 # include <stdarg.h>
 # include <locale.h>
 # include <wchar.h>
